@@ -1,0 +1,14 @@
+<!-- Plugin icon (store / plugin list). Bolt based on Lucide "zap" (ISC). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7b61ff"/>
+      <stop offset="1" stop-color="#4b3bc4"/>
+    </linearGradient>
+  </defs>
+  <rect width="144" height="144" fill="url(#bg)"/>
+  <rect x="30" y="30" width="84" height="84" rx="18" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-width="6"/>
+  <g transform="translate(42 42) scale(2.5)" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
+  </g>
+</svg>
