@@ -21,6 +21,6 @@ for (const { source, output } of PREVIEWS) {
 		<rect width="${SIZE}" height="${SIZE}" rx="20" fill="#1c1c1f"/>
 		<image width="${SIZE}" height="${SIZE}" xlink:href="data:image/png;base64,${image}"/>
 	</svg>`;
-	writeFileSync(`${OUT_DIR}/${output}`, new Resvg(svg, { fitTo: { mode: "width", value: SIZE * 2 } }).render().asPng());
+	writeFileSync(`${OUT_DIR}/${output}`, new Resvg(svg, { fitTo: { mode: "width", value: SIZE } }).render().asPng());
 	console.log(`${OUT_DIR}/${output}`);
 }

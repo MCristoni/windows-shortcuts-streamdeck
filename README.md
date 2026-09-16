@@ -1,4 +1,4 @@
-# Windows Shortcuts for Stream Deck & StreamDock
+# Shortcuts for Windows: Stream Deck & StreamDock plugin
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/MCristoni/windows-shortcuts-streamdeck)](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest)
@@ -48,7 +48,6 @@ Step-by-step instructions, including uninstalling and troubleshooting, are in [H
 | [How to use](docs/how-to-use.md) | Installing, adding the key, what each state means, troubleshooting |
 | [How it works](docs/how-it-works.md) | Architecture, the Windows API behind the toggle, design decisions and known limitations |
 | [Development](docs/development.md) | Building from source, project layout, scripts, debugging |
-| [Publishing](docs/publishing.md) | Release checklist and how to submit to the Elgato Marketplace and Mirabox Space |
 | [Changelog](CHANGELOG.md) | Version history |
 
 ## Building from source

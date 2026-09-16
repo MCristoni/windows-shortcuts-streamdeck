@@ -1,4 +1,4 @@
-# Windows Shortcuts para Stream Deck e StreamDock
+# Shortcuts for Windows: plugin para Stream Deck e StreamDock
 
 Plugin nativo que coloca atalhos do Windows no seu deck. A primeira ação é um **botão de Não Perturbe para o Windows 11**: aperte a tecla para ligar ou desligar o Não Perturbe, e ela sempre mostra o estado real do sistema.
 
@@ -41,7 +41,7 @@ Baixe os arquivos na [página de releases](https://github.com/MCristoni/windows-
 
 ## Uso
 
-1. Na lista de ações, abra a categoria **Windows Shortcuts**.
+1. Na lista de ações, abra a categoria **Shortcuts for Windows**.
 2. Arraste **Do Not Disturb Toggle** para uma tecla.
 3. Aperte a tecla para alternar. Sino significa desligado. Sino com "z" significa ligado.
 
@@ -52,7 +52,7 @@ Ligar o Não Perturbe ativa o modo **Somente prioridade** do Windows, igual ao b
 - **A tecla mostra um ícone de alerta**: o plugin não conseguiu falar com o Windows. Em PCs corporativos, o PowerShell pode estar bloqueado por política. Veja os logs em `...\com.mcristoni.windows-shortcuts.sdPlugin\logs\` e [abra uma issue](https://github.com/MCristoni/windows-shortcuts-streamdeck/issues).
 - **O plugin não aparece ou não reage no Fifine Control Deck**: confira se a pasta foi extraída no lugar certo e reinicie o app. O log do app fica em `%APPDATA%\HotSpot\StreamDock\logs\`.
 
-Mais detalhes em inglês: [How to use](docs/how-to-use.md) · [How it works](docs/how-it-works.md) · [Development](docs/development.md) · [Publishing](docs/publishing.md)
+Mais detalhes em inglês: [How to use](docs/how-to-use.md) · [How it works](docs/how-it-works.md) · [Development](docs/development.md)
 
 ## Licença
 

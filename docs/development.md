@@ -19,12 +19,13 @@ npm run build
 │   ├── manifest.json                           # Plugin metadata, actions, states, images
 │   ├── bin/                                    # Compiled plugin (generated, not committed)
 │   ├── imgs/actions/                           # Action and key images (hand-edited PNGs)
-│   ├── imgs/plugin/                            # Plugin and category icons (generated from icons/)
-│   └── scripts/dnd-worker.ps1                  # PowerShell worker that talks to Windows
+│   └── imgs/plugin/                            # Plugin and category icons (generated from icons/)
 ├── src/
 │   ├── plugin.ts                               # Entry point: registers actions and connects
 │   ├── actions/do-not-disturb.ts               # The Do Not Disturb key
-│   └── windows/do-not-disturb.ts               # Client for the PowerShell worker
+│   ├── windows/do-not-disturb.ts               # Client for the PowerShell worker
+│   ├── windows/dnd-worker.ps1                  # PowerShell worker (embedded into plugin.js at build time)
+│   └── types.d.ts                              # Lets TypeScript import *.ps1 files as text
 ├── icons/                                      # SVG sources for the plugin and category icons
 ├── tools/
 │   ├── build-icons.mjs                         # icons/*.svg -> imgs/plugin/*.png (base + @2x)
@@ -32,7 +33,7 @@ npm run build
 │   ├── pack.mjs                                # Build + release artifacts in dist/
 │   └── reload-plugin.ps1                       # Restart the running plugin
 ├── docs/                                       # Documentation (docs/images/ holds generated previews)
-└── rollup.config.mjs                           # Bundles src/ into bin/plugin.js
+└── rollup.config.mjs                           # Bundles src/ (including the .ps1 worker) into bin/plugin.js
 ```
 
 ## Scripts
@@ -83,7 +84,7 @@ Things to know about these hosts:
 - **The worker can be tested on its own**, without any host app:
 
   ```bash
-  powershell -NoProfile -ExecutionPolicy Bypass -File com.mcristoni.windows-shortcuts.sdPlugin/scripts/dnd-worker.ps1
+  powershell -NoProfile -ExecutionPolicy Bypass -File src/windows/dnd-worker.ps1
   ```
 
   Wait for `ready`, then type `get`, `toggle`, `on` or `off` followed by Enter. Close it with `Ctrl+C`.
@@ -96,14 +97,14 @@ All images are PNG files with a transparent background, provided at a base size 
 | Image | Files | Base size | How it is maintained |
 | --- | --- | --- | --- |
 | Plugin icon | `imgs/plugin/marketplace.png`, `@2x` | 256 px | Generated from `icons/plugin.svg` with `npm run icons` |
-| Category icon | `imgs/plugin/category-icon.png`, `@2x` | 48 px | Generated from `icons/category.svg` with `npm run icons` |
-| Action list icon | `imgs/actions/dnd/action.png`, `@2x` | 144 px | Edited by hand |
-| Key, Do Not Disturb off | `imgs/actions/dnd/dnd-off.png`, `@2x` | 144 px | Edited by hand |
-| Key, Do Not Disturb on | `imgs/actions/dnd/dnd-on.png`, `@2x` | 144 px | Edited by hand |
+| Category icon | `imgs/plugin/category-icon.png`, `@2x` | 28 px | Generated from `icons/category.svg` with `npm run icons` |
+| Action list icon | `imgs/actions/dnd/action.png`, `@2x` | 20 px | Edited by hand |
+| Key, Do Not Disturb off | `imgs/actions/dnd/dnd-off.png`, `@2x` | 72 px | Edited by hand |
+| Key, Do Not Disturb on | `imgs/actions/dnd/dnd-on.png`, `@2x` | 72 px | Edited by hand |
 
 The images in `imgs/actions/` are the source of truth: edit them directly in an image editor, and no script overwrites them. After changing a key image, run `npm run doc-images` so the previews in the documentation match. The previews add a dark key background, because white icons on a transparent background are invisible on GitHub's light theme.
 
-See the [Elgato Marketplace guidelines](https://docs.elgato.com/guidelines/stream-deck/plugins/) and the [Mirabox Space style guide](https://sdk.key123.vip/en/guide/style-guide.html) for recommended sizes. Action and category icons should be monochrome on a transparent background.
+These are the sizes required by the [Elgato Marketplace guidelines](https://docs.elgato.com/guidelines/stream-deck/plugins/). Action and category icons must be monochrome white (`#FFFFFF`) on a transparent background. The [Mirabox Space style guide](https://sdk.key123.vip/en/guide/style-guide.html) suggests larger images (40 px action, 48 px category, 128 px keys); StreamDock-based apps scale the Elgato sizes without problems.
 
 ## Adding a new action
 

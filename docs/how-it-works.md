@@ -8,7 +8,7 @@ This document explains what happens between pressing the key and Windows turning
 flowchart LR
     Deck["Deck key"] --> Host["Host app<br/>(Stream Deck / Control Deck)"]
     Host <-->|WebSocket| Plugin["Plugin process<br/>Node.js · bin/plugin.js"]
-    Plugin <-->|"stdin / stdout<br/>one line per command"| Worker["PowerShell worker<br/>scripts/dnd-worker.ps1"]
+    Plugin <-->|"stdin / stdout<br/>one line per command"| Worker["PowerShell worker<br/>(embedded in plugin.js)"]
     Worker <-->|COM| QH["QuietHoursSettings<br/>(Windows notification platform)"]
     QH --> Shell["Windows shell<br/>taskbar bell, Notification Center"]
 ```
@@ -42,9 +42,11 @@ Spawns and manages the PowerShell process:
 - **Self-healing.** If the process exits, errors, or a request takes longer than 15 seconds, all pending requests are rejected and the next command spawns a fresh worker.
 - **No orphans.** When the plugin process exits, the worker's stdin closes, its read loop ends and PowerShell exits on its own.
 
-### Worker: `com.mcristoni.windows-shortcuts.sdPlugin/scripts/dnd-worker.ps1`
+### Worker: `src/windows/dnd-worker.ps1`
 
-A PowerShell 5.1 script that compiles a tiny C# interop definition with `Add-Type`, prints `ready`, and then serves a line protocol:
+A PowerShell 5.1 script that compiles a tiny C# interop definition with `Add-Type`, prints `ready`, and then serves a line protocol.
+
+The script is **not shipped as a file**. The build imports it as text into `bin/plugin.js`, and the plugin passes it to `powershell.exe -EncodedCommand`. Plugins distributed through the Elgato Marketplace are DRM-encrypted on disk, so the plugin must not depend on reading its own files at runtime; embedding the script avoids that, and also means PowerShell's script execution policy does not apply.
 
 | Command (stdin) | Effect | Response (stdout) |
 | --- | --- | --- |
@@ -98,7 +100,7 @@ Several simpler-looking approaches were considered, and most were tried first. N
 
 The COM class needs no elevation, applies instantly, and gives a real read-back of the state.
 
-**Why PowerShell instead of a native Node module?** A native addon or FFI library would need prebuilt binaries for the Node version bundled by each host app (StreamDock-based apps ship their own Node 20). PowerShell 5.1 and the .NET Framework compiler are present on every Windows 10/11 install, so the plugin stays a plain JavaScript bundle plus one script.
+**Why PowerShell instead of a native Node module?** A native addon or FFI library would need prebuilt binaries for the Node version bundled by each host app (StreamDock-based apps ship their own Node 20). PowerShell 5.1 and the .NET Framework compiler are present on every Windows 10/11 install, so the plugin stays a single JavaScript bundle.
 
 ## Limitations
 
@@ -111,5 +113,5 @@ The COM class needs no elevation, applies instantly, and gives a real read-back 
 
 - No network access, telemetry or data collection.
 - No administrator rights; everything runs as the signed-in user.
-- PowerShell is started with `-ExecutionPolicy Bypass` only for the script bundled inside the plugin folder, so that unsigned local scripts are not blocked by the default policy. No other scripts or downloaded code are executed.
+- The only process started is `powershell.exe`, running the worker script embedded in the plugin (via `-EncodedCommand`). No script files are written to disk, and no other scripts or downloaded code are executed.
 - The only system change the plugin makes is selecting the Do Not Disturb profile, exactly as the Windows UI would.

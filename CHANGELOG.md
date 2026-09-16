@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
+All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions match the plugin manifest (`major.minor.patch.build`).
 
-## [1.0.0] - 2026-09-16
+## [1.0.0.0] - 2026-09-16
 
 ### Added
 
@@ -11,4 +11,4 @@ All notable changes to this project are documented here. The format follows [Kee
 - Alert icon on the key when Windows rejects the change.
 - Support for Elgato Stream Deck 7.1+ and StreamDock-based apps such as Fifine Control Deck.
 
-[1.0.0]: https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/tag/v1.0.0
+[1.0.0.0]: https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/tag/v1.0.0.0

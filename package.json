@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "description": "Stream Deck / StreamDock plugin with Windows shortcuts, starting with a Windows 11 Do Not Disturb toggle.",
-    "author": "Matheus Montanari",
+    "author": "Matheus Cristoni",
     "license": "MIT",
     "repository": {
         "type": "git",

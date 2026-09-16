@@ -35,7 +35,7 @@ These apps do not install `.streamDeckPlugin` files by double-click, so the plug
 
 ## Add the key
 
-1. In the host app, find the **Windows Shortcuts** category in the action list.
+1. In the host app, find the **Shortcuts for Windows** category in the action list.
 2. Drag **Do Not Disturb Toggle** onto a key.
 3. The key immediately shows the current Windows state.
 
@@ -89,7 +89,7 @@ When reporting a problem, attach the newest `com.mcristoni.windows-shortcuts.0.l
 
 ## Uninstall
 
-- **Elgato Stream Deck**: open *Preferences → Plugins*, select **Windows Shortcuts** and uninstall it.
+- **Elgato Stream Deck**: open *Preferences → Plugins*, select **Shortcuts for Windows** and uninstall it.
 - **Fifine Control Deck / StreamDock**: close the app and delete the `com.mcristoni.windows-shortcuts.sdPlugin` folder from `%APPDATA%\HotSpot\StreamDock\plugins\`.
 
 Uninstalling does not change your Windows Do Not Disturb setting.

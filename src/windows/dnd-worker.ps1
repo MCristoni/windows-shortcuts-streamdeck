@@ -1,12 +1,17 @@
 # Long-lived worker that controls Windows 11 "Do Not Disturb".
 #
-# Uses the internal QuietHoursSettings COM class (the same one the Windows shell
-# uses), which persists the active profile to CloudStore and notifies the system.
+# Uses the internal QuietHoursSettings COM class, which persists the active
+# profile to CloudStore and notifies the system.
+#
+# The build embeds this script in bin/plugin.js, which starts it with
+# powershell.exe -EncodedCommand; it is never read from disk at runtime.
 #
 # Protocol (one command per line on stdin, one response per line on stdout):
 #   get | on | off | toggle   ->   "on" | "off" | "error:<message>"
 
 $ErrorActionPreference = 'Stop'
+# Progress records would otherwise be written to stderr as CLIXML.
+$ProgressPreference = 'SilentlyContinue'
 
 Add-Type -TypeDefinition @"
 using System;

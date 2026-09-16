@@ -27,6 +27,13 @@ const config = {
 				this.addWatchFile(`${sdPlugin}/manifest.json`);
 			},
 		},
+		{
+			// Imports *.ps1 files as strings, so scripts ship inside bin/plugin.js instead of as separate files.
+			name: "import-powershell-as-text",
+			transform(code, id) {
+				return id.endsWith(".ps1") ? { code: `export default ${JSON.stringify(code)};`, map: null } : null;
+			}
+		},
 		typescript({
 			mapRoot: isWatching ? "./" : undefined
 		}),

@@ -1,7 +1,7 @@
 import streamDeck from "@elgato/streamdeck";
 import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
 import { createInterface } from "node:readline";
-import { fileURLToPath } from "node:url";
+import workerScript from "./dnd-worker.ps1";
 
 type Command = "get" | "on" | "off" | "toggle";
 
@@ -11,8 +11,9 @@ type PendingRequest = {
 	timer: NodeJS.Timeout;
 };
 
-// bin/plugin.js -> scripts/dnd-worker.ps1 (inside the .sdPlugin folder)
-const SCRIPT_PATH = fileURLToPath(new URL("../scripts/dnd-worker.ps1", import.meta.url));
+// The worker is bundled into plugin.js and passed to PowerShell directly, so the plugin never reads
+// a script file at runtime (Marketplace DRM encrypts the installed plugin files).
+const ENCODED_WORKER = Buffer.from(workerScript, "utf16le").toString("base64");
 
 // The first request includes compiling the Add-Type interop, which can take a moment.
 const REQUEST_TIMEOUT_MS = 15_000;
@@ -58,7 +59,7 @@ class DoNotDisturbWorker {
 
 		const child = spawn(
 			"powershell.exe",
-			["-NoLogo", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", SCRIPT_PATH],
+			["-NoLogo", "-NoProfile", "-NonInteractive", "-EncodedCommand", ENCODED_WORKER],
 			{ windowsHide: true }
 		);
 

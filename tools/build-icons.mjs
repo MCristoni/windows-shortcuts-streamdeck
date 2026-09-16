@@ -12,7 +12,7 @@ const SD_PLUGIN = "com.mcristoni.windows-shortcuts.sdPlugin";
 
 const IMAGES = [
 	{ source: "plugin", output: "imgs/plugin/marketplace", size: 256 },
-	{ source: "category", output: "imgs/plugin/category-icon", size: 48 }
+	{ source: "category", output: "imgs/plugin/category-icon", size: 28 }
 ];
 
 for (const { source, output, size } of IMAGES) {
