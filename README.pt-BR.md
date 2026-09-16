@@ -3,9 +3,9 @@
 Plugin nativo que coloca atalhos do Windows no seu deck. A primeira ação é um **botão de Não Perturbe para o Windows 11**: aperte a tecla para ligar ou desligar o Não Perturbe, e ela sempre mostra o estado real do sistema.
 
 <p>
-  <img src="com.mcristoni.windows-shortcuts.sdPlugin/imgs/actions/dnd/dnd-off@2x.png" width="96" alt="Tecla com o Não Perturbe desligado">
+  <img src="docs/images/dnd-off.png" width="96" alt="Tecla com o Não Perturbe desligado">
   &nbsp;
-  <img src="com.mcristoni.windows-shortcuts.sdPlugin/imgs/actions/dnd/dnd-on@2x.png" width="96" alt="Tecla com o Não Perturbe ligado">
+  <img src="docs/images/dnd-on.png" width="96" alt="Tecla com o Não Perturbe ligado">
 </p>
 
 > 🇺🇸 [Read in English](README.md). A documentação completa está em inglês.
@@ -43,7 +43,7 @@ Baixe os arquivos na [página de releases](https://github.com/MCristoni/windows-
 
 1. Na lista de ações, abra a categoria **Windows Shortcuts**.
 2. Arraste **Do Not Disturb Toggle** para uma tecla.
-3. Aperte a tecla para alternar. Ícone escuro com sino significa desligado. Ícone roxo com sino e "z" significa ligado.
+3. Aperte a tecla para alternar. Sino significa desligado. Sino com "z" significa ligado.
 
 Ligar o Não Perturbe ativa o modo **Somente prioridade** do Windows, igual ao botão da Central de Notificações. Notificações marcadas como prioritárias em *Configurações → Sistema → Notificações* continuam aparecendo.
 

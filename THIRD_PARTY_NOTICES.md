@@ -2,7 +2,7 @@
 
 ## Lucide icons
 
-The bell (`bell`) and bolt (`zap`) shapes in `icons/*.svg`, and the PNG images rendered from them, are based on icons from [Lucide](https://lucide.dev), licensed under the ISC License:
+The bolt shape (`zap`) in `icons/plugin.svg` and `icons/category.svg`, and the plugin and category PNG images rendered from them, are based on an icon from [Lucide](https://lucide.dev), licensed under the ISC License:
 
 ```
 ISC License

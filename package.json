@@ -18,6 +18,7 @@
         "watch": "rollup -c -w --watch.onEnd=\"npm run reload\"",
         "reload": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/reload-plugin.ps1",
         "icons": "node tools/build-icons.mjs",
+        "doc-images": "node tools/build-doc-images.mjs",
         "pack": "node tools/pack.mjs"
     },
     "type": "module",

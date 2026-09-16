@@ -6,9 +6,9 @@
 A native plugin that puts Windows shortcuts on your deck. The first action is a **Do Not Disturb toggle for Windows 11**: press the key to turn Do Not Disturb on or off, and the key always shows the real state.
 
 <p>
-  <img src="com.mcristoni.windows-shortcuts.sdPlugin/imgs/actions/dnd/dnd-off@2x.png" width="96" alt="Key image when Do Not Disturb is off">
+  <img src="docs/images/dnd-off.png" width="96" alt="Key image when Do Not Disturb is off">
   &nbsp;
-  <img src="com.mcristoni.windows-shortcuts.sdPlugin/imgs/actions/dnd/dnd-on@2x.png" width="96" alt="Key image when Do Not Disturb is on">
+  <img src="docs/images/dnd-on.png" width="96" alt="Key image when Do Not Disturb is on">
 </p>
 
 > 🇧🇷 [Leia em português](README.pt-BR.md)
@@ -64,6 +64,6 @@ The installers are written to `dist/`. See [Development](docs/development.md) fo
 
 ## License
 
-[MIT](LICENSE). Icons include shapes from [Lucide](https://lucide.dev) (ISC); see [Third-party notices](THIRD_PARTY_NOTICES.md).
+[MIT](LICENSE). The plugin and category icons are based on [Lucide](https://lucide.dev) (ISC); see [Third-party notices](THIRD_PARTY_NOTICES.md).
 
 This project is not affiliated with or endorsed by Microsoft, Elgato (Corsair), Mirabox or Fifine.

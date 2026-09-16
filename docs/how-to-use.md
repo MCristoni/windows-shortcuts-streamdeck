@@ -41,8 +41,8 @@ These apps do not install `.streamDeckPlugin` files by double-click, so the plug
 
 | Key | Meaning |
 | --- | --- |
-| <img src="../com.mcristoni.windows-shortcuts.sdPlugin/imgs/actions/dnd/dnd-off@2x.png" width="72" alt="Dark key with a bell"> | Do Not Disturb is **off**: notifications show normally. |
-| <img src="../com.mcristoni.windows-shortcuts.sdPlugin/imgs/actions/dnd/dnd-on@2x.png" width="72" alt="Purple key with a bell and a z"> | Do Not Disturb is **on**: notification banners are silenced. |
+| <img src="images/dnd-off.png" width="72" alt="Bell"> | Do Not Disturb is **off**: notifications show normally. |
+| <img src="images/dnd-on.png" width="72" alt="Bell with a z"> | Do Not Disturb is **on**: notification banners are silenced. |
 
 ## Use it
 

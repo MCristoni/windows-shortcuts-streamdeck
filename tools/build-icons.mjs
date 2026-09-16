@@ -1,6 +1,9 @@
-// Renders the PNG images inside the .sdPlugin folder from the SVG sources in icons/ (npm run icons).
+// Renders the plugin and category PNGs from the SVG sources in icons/ (npm run icons).
 // Each image is written at its base size and as @2x, the convention read by Stream Deck and StreamDock.
 // Sizes satisfy both the Elgato Marketplace and the Mirabox Space style guides.
+//
+// The action images in imgs/actions/ are edited by hand and are NOT generated here,
+// so running this script never overwrites them.
 import { Resvg } from "@resvg/resvg-js";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -9,10 +12,7 @@ const SD_PLUGIN = "com.mcristoni.windows-shortcuts.sdPlugin";
 
 const IMAGES = [
 	{ source: "plugin", output: "imgs/plugin/marketplace", size: 256 },
-	{ source: "category", output: "imgs/plugin/category-icon", size: 48 },
-	{ source: "action", output: "imgs/actions/dnd/action", size: 40 },
-	{ source: "dnd-off", output: "imgs/actions/dnd/dnd-off", size: 144 },
-	{ source: "dnd-on", output: "imgs/actions/dnd/dnd-on", size: 144 }
+	{ source: "category", output: "imgs/plugin/category-icon", size: 48 }
 ];
 
 for (const { source, output, size } of IMAGES) {

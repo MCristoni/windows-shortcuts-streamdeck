@@ -18,18 +18,20 @@ npm run build
 ├── com.mcristoni.windows-shortcuts.sdPlugin/   # The plugin folder loaded by the host app
 │   ├── manifest.json                           # Plugin metadata, actions, states, images
 │   ├── bin/                                    # Compiled plugin (generated, not committed)
-│   ├── imgs/                                   # PNG images (generated from icons/, committed)
+│   ├── imgs/actions/                           # Action and key images (hand-edited PNGs)
+│   ├── imgs/plugin/                            # Plugin and category icons (generated from icons/)
 │   └── scripts/dnd-worker.ps1                  # PowerShell worker that talks to Windows
 ├── src/
 │   ├── plugin.ts                               # Entry point: registers actions and connects
 │   ├── actions/do-not-disturb.ts               # The Do Not Disturb key
 │   └── windows/do-not-disturb.ts               # Client for the PowerShell worker
-├── icons/                                      # SVG sources for every image
+├── icons/                                      # SVG sources for the plugin and category icons
 ├── tools/
-│   ├── build-icons.mjs                         # SVG -> PNG (base + @2x)
+│   ├── build-icons.mjs                         # icons/*.svg -> imgs/plugin/*.png (base + @2x)
+│   ├── build-doc-images.mjs                    # Key previews for the docs (docs/images/)
 │   ├── pack.mjs                                # Build + release artifacts in dist/
 │   └── reload-plugin.ps1                       # Restart the running plugin
-├── docs/                                       # Documentation
+├── docs/                                       # Documentation (docs/images/ holds generated previews)
 └── rollup.config.mjs                           # Bundles src/ into bin/plugin.js
 ```
 
@@ -40,7 +42,8 @@ npm run build
 | `npm run build` | Bundles `src/` into `com.mcristoni.windows-shortcuts.sdPlugin/bin/plugin.js`. |
 | `npm run watch` | Rebuilds on every change and runs `npm run reload` after each build. |
 | `npm run reload` | Kills the running plugin process; the host app relaunches it with the new build. |
-| `npm run icons` | Renders `icons/*.svg` into the PNGs referenced by the manifest. |
+| `npm run icons` | Renders `icons/*.svg` into the plugin and category PNGs in `imgs/plugin/`. Never touches `imgs/actions/`. |
+| `npm run doc-images` | Rebuilds the key previews in `docs/images/` from the action PNGs. |
 | `npm run pack` | Builds and writes the release artifacts to `dist/`. |
 
 ## Loading the plugin from source
@@ -88,23 +91,25 @@ Things to know about these hosts:
 
 ## Images
 
-All images are generated from the SVG files in `icons/`. Edit the SVG, then run `npm run icons`.
+All images are PNG files with a transparent background, provided at a base size and as `@2x`.
 
-| Source | Output | Base size (@2x is double) |
-| --- | --- | --- |
-| `icons/plugin.svg` | `imgs/plugin/marketplace` | 256 px |
-| `icons/category.svg` | `imgs/plugin/category-icon` | 48 px |
-| `icons/action.svg` | `imgs/actions/dnd/action` | 40 px |
-| `icons/dnd-off.svg` | `imgs/actions/dnd/dnd-off` | 144 px |
-| `icons/dnd-on.svg` | `imgs/actions/dnd/dnd-on` | 144 px |
+| Image | Files | Base size | How it is maintained |
+| --- | --- | --- | --- |
+| Plugin icon | `imgs/plugin/marketplace.png`, `@2x` | 256 px | Generated from `icons/plugin.svg` with `npm run icons` |
+| Category icon | `imgs/plugin/category-icon.png`, `@2x` | 48 px | Generated from `icons/category.svg` with `npm run icons` |
+| Action list icon | `imgs/actions/dnd/action.png`, `@2x` | 144 px | Edited by hand |
+| Key, Do Not Disturb off | `imgs/actions/dnd/dnd-off.png`, `@2x` | 144 px | Edited by hand |
+| Key, Do Not Disturb on | `imgs/actions/dnd/dnd-on.png`, `@2x` | 144 px | Edited by hand |
 
-Sizes meet both the [Elgato Marketplace guidelines](https://docs.elgato.com/guidelines/stream-deck/plugins/) and the [Mirabox Space style guide](https://sdk.key123.vip/en/guide/style-guide.html). Action and category icons must stay monochrome white on a transparent background.
+The images in `imgs/actions/` are the source of truth: edit them directly in an image editor, and no script overwrites them. After changing a key image, run `npm run doc-images` so the previews in the documentation match. The previews add a dark key background, because white icons on a transparent background are invisible on GitHub's light theme.
+
+See the [Elgato Marketplace guidelines](https://docs.elgato.com/guidelines/stream-deck/plugins/) and the [Mirabox Space style guide](https://sdk.key123.vip/en/guide/style-guide.html) for recommended sizes. Action and category icons should be monochrome on a transparent background.
 
 ## Adding a new action
 
 1. Create a class in `src/actions/` decorated with `@action({ UUID: "com.mcristoni.windows-shortcuts.<name>" })`.
 2. Register it in `src/plugin.ts`.
-3. Add the action to `manifest.json` with the same UUID, plus SVG sources in `icons/` and entries in `tools/build-icons.mjs`.
-4. Run `npm run icons`, `npm run build`, and validate with `npx streamdeck validate com.mcristoni.windows-shortcuts.sdPlugin`.
+3. Add the action to `manifest.json` with the same UUID, and put its PNG images (transparent background, base size and `@2x`) in `imgs/actions/<name>/`.
+4. Run `npm run build` and validate with `npx streamdeck validate com.mcristoni.windows-shortcuts.sdPlugin`.
 
 Action UUIDs cannot change once the plugin is published, because users' saved profiles reference them.
