@@ -2,6 +2,8 @@
 
 Plugin nativo que coloca atalhos do Windows no seu deck. A primeira ação é um **botão de Não Perturbe para o Windows 11**: aperte a tecla para ligar ou desligar o Não Perturbe, e ela sempre mostra o estado real do sistema.
 
+**Disponível na [Elgato Marketplace](https://marketplace.elgato.com/product/shortcuts-for-windows-9ac4f217-bfaa-49c2-bcff-eca3f61d9ca3)** para os dispositivos Stream Deck da Elgato. Também funciona em decks baseados no StreamDock, como a linha **Fifine AmpliGame**.
+
 <p>
   <img src="docs/images/dnd-off.png" width="96" alt="Tecla com o Não Perturbe desligado">
   &nbsp;
@@ -21,20 +23,18 @@ Plugin nativo que coloca atalhos do Windows no seu deck. A primeira ação é um
 ## Compatibilidade
 
 - ✅ Windows 11 (testado no 25H2). Windows 10 não foi testado. macOS não é suportado.
-- ✅ Fifine Control Deck 3.10 com Fifine D6 (testado).
+- ✅ Elgato Stream Deck 7.1+ com os dispositivos Stream Deck da Elgato: [publicado na Elgato Marketplace](https://marketplace.elgato.com/product/shortcuts-for-windows-9ac4f217-bfaa-49c2-bcff-eca3f61d9ca3).
+- ✅ Fifine AmpliGame (testado no AmpliGame D6) com Fifine Control Deck 3.10.
 - ⚠️ Mirabox StreamDock e outros apps baseados no StreamDock: devem funcionar.
-- ⚠️ Elgato Stream Deck 7.1+: feito com o SDK oficial da Elgato, ainda não testado em hardware Elgato.
 
 ## Instalação
 
-Baixe os arquivos na [página de releases](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest).
-
 **Elgato Stream Deck**
-1. Baixe `com.mcristoni.windows-shortcuts.streamDeckPlugin`.
-2. Dê dois cliques no arquivo.
+- Instale de graça pela [Elgato Marketplace](https://marketplace.elgato.com/product/shortcuts-for-windows-9ac4f217-bfaa-49c2-bcff-eca3f61d9ca3) (recomendado), ou
+- baixe `com.mcristoni.windows-shortcuts.streamDeckPlugin` na [página de releases](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest) e dê dois cliques no arquivo.
 
-**Fifine Control Deck / StreamDock**
-1. Baixe `com.mcristoni.windows-shortcuts.sdPlugin.zip`.
+**Fifine AmpliGame / Fifine Control Deck / StreamDock**
+1. Baixe `com.mcristoni.windows-shortcuts.sdPlugin.zip` na [página de releases](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest).
 2. Feche o app, inclusive na bandeja do sistema.
 3. Extraia o zip em `%APPDATA%\HotSpot\StreamDock\plugins\`. O arquivo `manifest.json` precisa ficar em `...\plugins\com.mcristoni.windows-shortcuts.sdPlugin\manifest.json`.
 4. Abra o app de novo.

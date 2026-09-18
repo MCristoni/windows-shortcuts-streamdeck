@@ -2,8 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/MCristoni/windows-shortcuts-streamdeck)](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest)
+[![Elgato Marketplace](https://img.shields.io/badge/Elgato%20Marketplace-Get%20it%20free-1f6feb)](https://marketplace.elgato.com/product/shortcuts-for-windows-9ac4f217-bfaa-49c2-bcff-eca3f61d9ca3)
 
 A native plugin that puts Windows shortcuts on your deck. The first action is a **Do Not Disturb toggle for Windows 11**: press the key to turn Do Not Disturb on or off, and the key always shows the real state.
+
+**Now available on the [Elgato Marketplace](https://marketplace.elgato.com/product/shortcuts-for-windows-9ac4f217-bfaa-49c2-bcff-eca3f61d9ca3)** for Elgato Stream Deck devices. It also runs on StreamDock-based decks such as the **Fifine AmpliGame** series.
 
 <p>
   <img src="docs/images/dnd-off.png" width="96" alt="Key image when Do Not Disturb is off">
@@ -28,16 +31,14 @@ A native plugin that puts Windows shortcuts on your deck. The first action is a 
 | Windows 11 (tested on 25H2, build 26200) | ✅ Supported |
 | Windows 10 | ⚠️ Untested (should drive Focus Assist "Priority only") |
 | macOS | ❌ Not supported (the action uses Windows-only APIs) |
-| Fifine Control Deck 3.10 (Fifine D6) | ✅ Tested |
+| Elgato Stream Deck 7.1+ with Elgato Stream Deck devices | ✅ Supported, [published on the Elgato Marketplace](https://marketplace.elgato.com/product/shortcuts-for-windows-9ac4f217-bfaa-49c2-bcff-eca3f61d9ca3) |
+| Fifine AmpliGame (tested on the AmpliGame D6) with Fifine Control Deck 3.10 | ✅ Tested |
 | Mirabox StreamDock and other StreamDock-based apps | ⚠️ Expected to work (same host as Fifine Control Deck) |
-| Elgato Stream Deck 7.1+ | ⚠️ Built with the official Elgato SDK, not yet tested on Elgato hardware |
 
 ## Installation
 
-Download the latest files from the [Releases page](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest).
-
-- **Elgato Stream Deck**: download `com.mcristoni.windows-shortcuts.streamDeckPlugin` and double-click it.
-- **Fifine Control Deck / StreamDock**: download `com.mcristoni.windows-shortcuts.sdPlugin.zip`, extract it into `%APPDATA%\HotSpot\StreamDock\plugins\`, and restart the app.
+- **Elgato Stream Deck**: install it for free from the [Elgato Marketplace](https://marketplace.elgato.com/product/shortcuts-for-windows-9ac4f217-bfaa-49c2-bcff-eca3f61d9ca3) (recommended), or download `com.mcristoni.windows-shortcuts.streamDeckPlugin` from the [Releases page](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest) and double-click it.
+- **Fifine AmpliGame / Fifine Control Deck / StreamDock**: download `com.mcristoni.windows-shortcuts.sdPlugin.zip` from the [Releases page](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest), extract it into `%APPDATA%\HotSpot\StreamDock\plugins\`, and restart the app.
 
 Step-by-step instructions, including uninstalling and troubleshooting, are in [How to use](docs/how-to-use.md).
 

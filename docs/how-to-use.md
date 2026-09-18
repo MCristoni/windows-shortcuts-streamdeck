@@ -6,24 +6,26 @@ This guide covers installing the plugin, putting the Do Not Disturb toggle on a 
 
 - Windows 11 (Windows 10 is untested).
 - One of these host apps:
-  - **Elgato Stream Deck** 7.1 or newer.
-  - **Fifine Control Deck**, **Mirabox StreamDock** or another StreamDock-based app.
+  - **Elgato Stream Deck** 7.1 or newer, with any Elgato Stream Deck device.
+  - **Fifine Control Deck** (Fifine AmpliGame decks), **Mirabox StreamDock** or another StreamDock-based app.
 - Windows PowerShell 5.1, which ships with Windows. The plugin does not need administrator rights.
 
 ## Install
 
-Download the files from the [latest release](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest).
-
 ### Elgato Stream Deck
 
-1. Download `com.mcristoni.windows-shortcuts.streamDeckPlugin`.
+**From the Elgato Marketplace (recommended):** open the [Shortcuts for Windows page](https://marketplace.elgato.com/product/shortcuts-for-windows-9ac4f217-bfaa-49c2-bcff-eca3f61d9ca3), click **Get** and follow the prompts. Stream Deck installs the plugin.
+
+**Manually:**
+
+1. Download `com.mcristoni.windows-shortcuts.streamDeckPlugin` from the [latest release](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest).
 2. Double-click the file. Stream Deck opens and asks to install the plugin.
 
-### Fifine Control Deck / StreamDock
+### Fifine AmpliGame (Fifine Control Deck) / StreamDock
 
 These apps do not install `.streamDeckPlugin` files by double-click, so the plugin is installed by copying its folder.
 
-1. Download `com.mcristoni.windows-shortcuts.sdPlugin.zip`.
+1. Download `com.mcristoni.windows-shortcuts.sdPlugin.zip` from the [latest release](https://github.com/MCristoni/windows-shortcuts-streamdeck/releases/latest).
 2. Close the app (also from the system tray).
 3. Open `%APPDATA%\HotSpot\StreamDock\plugins\` in File Explorer (paste the path into the address bar).
 4. Extract the zip there. You should end up with:
